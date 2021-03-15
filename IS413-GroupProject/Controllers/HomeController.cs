@@ -23,7 +23,11 @@ namespace IS413_GroupProject.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        public IActionResult ViewAppointments()
         {
             return View();
         }
@@ -35,3 +39,5 @@ namespace IS413_GroupProject.Controllers
         }
     }
 }
+
+
