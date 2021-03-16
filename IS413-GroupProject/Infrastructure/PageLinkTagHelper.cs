@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using IS413_GroupProject.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-
+/*
 namespace IS413_GroupProject.Infrastructure
 {
     public class PageLinkTagHelper
@@ -77,3 +77,4 @@ namespace IS413_GroupProject.Infrastructure
         }
     }
 }
+*/
