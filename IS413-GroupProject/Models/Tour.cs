@@ -10,10 +10,19 @@ namespace IS413_GroupProject.Models
         public int TourId { get; set; }
 
         [Required]
-        public DateTime TourTime { get; set; }
+        public DateTime AppointmentDate { get; set; }
 
         [Required]
         public string TourType { get; set; }
+
+        [Required]
+        public int GroupSize { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
+        [Required]
+        public string Language { get; set; }
 
     }
 }

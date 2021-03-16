@@ -2,8 +2,14 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model IQueryable<Tour>
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Home</p>
 </div>
 
+@foreach (var x in Model)
+{
+    <h3>@x.AppointmentDate.ToString("MMMM dd, yyyy")</h3>
+}

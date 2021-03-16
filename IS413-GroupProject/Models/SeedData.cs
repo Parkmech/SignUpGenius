@@ -24,26 +24,49 @@ namespace IS413_GroupProject.Models
 
                     new Tour
                     {
-                       TourTime = new DateTime(2021, 4, 1, 8, 0, 0),
-                       TourType = "Full Tour"
+                       AppointmentDate = new DateTime(2021, 4, 1, 8, 0, 0),
+                       TourType = "Full Tour",
+                       GroupSize = 30,
+                       Description = "Walk the perimeter of the site, sturdy shoes recommended.",
+                       Language = "English"
+
+
                     },
 
                     new Tour
                     {
-                        TourTime = new DateTime(2021, 4, 1, 9, 0, 0),
-                        TourType = "Full Tour"
+                        AppointmentDate = new DateTime(2021, 4, 1, 9, 0, 0),
+                        TourType = "Full Tour",
+                        GroupSize = 30,
+                        Description = "Walk the perimeter of the site, sturdy shoes recommended.",
+                        Language = "English"
                     },
 
                     new Tour
                     {
-                        TourTime = new DateTime(2021, 4, 1, 10, 0, 0),
-                        TourType = "Full Tour"
+                        AppointmentDate = new DateTime(2021, 4, 1, 10, 0, 0),
+                        TourType = "Full Tour",
+                        GroupSize = 30,
+                        Description = "Walk the perimeter of the site, sturdy shoes recommended.",
+                        Language = "English"
                     },
 
                     new Tour
                     {
-                        TourTime = new DateTime(2021, 4, 1, 11, 0, 0),
-                        TourType = "Full Tour"
+                        AppointmentDate = new DateTime(2021, 4, 1, 11, 0, 0),
+                        TourType = "Full Tour",
+                        GroupSize = 30,
+                        Description = "Walk the perimeter of the site, sturdy shoes recommended.",
+                        Language = "English"
+                    },
+
+                    new Tour
+                    {
+                        AppointmentDate = new DateTime(2021, 4, 1, 12, 0, 0),
+                        TourType = "Full Tour",
+                        GroupSize = 30,
+                        Description = "Walk the perimeter of the site, sturdy shoes recommended.",
+                        Language = "English"
                     }
 
                     );
