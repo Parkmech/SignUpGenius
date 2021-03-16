@@ -24,6 +24,12 @@ namespace IS413_GroupProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +48,8 @@ namespace IS413_GroupProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -51,6 +59,10 @@ namespace IS413_GroupProject
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+
+                endpoints.MapRazorPages();
             });
         }
     }
