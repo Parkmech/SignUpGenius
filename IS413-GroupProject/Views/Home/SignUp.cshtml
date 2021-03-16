@@ -7,10 +7,14 @@
     ViewData["Title"] = "Home Page";
 }
 
-
+@model IS413_GroupProject.Models.ViewModels.TourListViewModel
 <!--This loop iterates through the model and gets all of the information that was entered in and adds it to the output-->
 
-<partial name="DateCardSummary" />
+@foreach (var x in Model.Tours)
+{
+    <partial name="DateCardSummary" model="x" />
+}
+
 
 
 

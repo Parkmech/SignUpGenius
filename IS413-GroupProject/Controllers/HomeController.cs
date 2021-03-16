@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IS413_GroupProject.Models;
+using IS413_GroupProject.Models.ViewModels;
 
 namespace IS413_GroupProject.Controllers
 {
@@ -14,6 +15,8 @@ namespace IS413_GroupProject.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private iTourRepository _repository;
+
+        public int ItemsPerPage = 12;
 
         public HomeController(ILogger<HomeController> logger, iTourRepository repository)
         {
@@ -26,27 +29,21 @@ namespace IS413_GroupProject.Controllers
             return View(_repository.Tours);
         }
 
-        public IActionResult SignUp()
+    
+        public IActionResult SignUp(int pageNum)
         {
-            return View();
+            return View(new TourListViewModel
+            {
+                Tours = _repository.Tours,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = ItemsPerPage,
+                    TotalNumItems = 84
+                }
+
+            });
         }
-        //public IActionResult SignUp(int pageNum)
-
-        //{
-        //    return View(new TimeSlotListViewModel.Where()
-        //    {
-        //        TimeSlot = _repository.TimeSlot.Where(p => date == null || p.date == Date)
-                    //.OrderBy(p => p.Time)
-                    //.Skip((pageNum - 1) * ItemsPerPage)
-                    //.Take(ItemsPerPage),
-
-                    //PagingInfo = new PagingInfoClass
-                    //{
-                    //  CurrentPage = pageNum,
-                    //  ItemsPerPage = ItemsPerPage,
-                    //  TotalNumItems = date == null ? _repository.TimeSlot.Count() : _respository.TimeSlot.Where(x => x.Date == date).Count()
-        //    }) ;
-        //}
 
         public IActionResult ScheduleInput()
         {
