@@ -23,12 +23,12 @@ namespace IS413_GroupProject.Controllers
 
         public IActionResult Index()
         {
-            return View(_repository.Tours);
+            return View();
         }
 
         public IActionResult SignUp()
         {
-            return View();
+            return View(_repository.Tours);
         }
         //public IActionResult SignUp(int pageNum)
 
