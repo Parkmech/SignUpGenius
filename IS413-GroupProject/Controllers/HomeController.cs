@@ -30,8 +30,25 @@ namespace IS413_GroupProject.Controllers
         {
             return View();
         }
+        //public IActionResult SignUp(int pageNum)
 
-        public IActionResult SignUpForm()
+        //{
+        //    return View(new TimeSlotListViewModel.Where()
+        //    {
+        //        TimeSlot = _repository.TimeSlot.Where(p => date == null || p.date == Date)
+                    //.OrderBy(p => p.Time)
+                    //.Skip((pageNum - 1) * ItemsPerPage)
+                    //.Take(ItemsPerPage),
+
+                    //PagingInfo = new PagingInfoClass
+                    //{
+                    //  CurrentPage = pageNum,
+                    //  ItemsPerPage = ItemsPerPage,
+                    //  TotalNumItems = date == null ? _repository.TimeSlot.Count() : _respository.TimeSlot.Where(x => x.Date == date).Count()
+        //    }) ;
+        //}
+
+        public IActionResult ScheduleInput()
         {
             return View();
         }

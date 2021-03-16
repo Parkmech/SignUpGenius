@@ -1,6 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Sign Up";
+    ViewData["Title"] = "Available Appointments";
 }
 <h1>@ViewData["Title"]</h1>
 
-<a asp-action="SignUpForm">Sign Up</a>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<!--This loop iterates through the model and gets all of the information that was entered in and adds it to the output-->
+
+<partial name="DateCardSummary" />
+
+
+
+
