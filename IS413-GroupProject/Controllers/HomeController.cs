@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IS413_GroupProject.Models;
+using IS413_GroupProject.Models.ViewModels;
 
 namespace IS413_GroupProject.Controllers
 {
@@ -14,6 +15,8 @@ namespace IS413_GroupProject.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private iTourRepository _repository;
+
+        public int ItemsPerPage = 12;
 
         public HomeController(ILogger<HomeController> logger, iTourRepository repository)
         {
@@ -25,25 +28,21 @@ namespace IS413_GroupProject.Controllers
         {
             return View();
         }
+        public IActionResult SignUp(int pageNum)
 
-        public IActionResult SignUp()
         {
-            return View(_repository.Tours);
+            return View(new TourListViewModel
+            {
+                Tours = _repository.Tours,
+
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = ItemsPerPage,
+                    TotalNumItems = 84
+                }
+            });
         }
-        //public IActionResult SignUp(int pageNum)
-
-        //{
-        //    return View(new TourListViewModel.Where()
-        //    {
-        //        Tours = _repository.Tours,
-
-                    //PagingInfo = new PagingInfo
-                    //{
-                    //  CurrentPage = pageNum,
-                    //  ItemsPerPage = ItemsPerPage,
-                    //  TotalNumItems = 84
-        //    }) ;
-        //}
 
         public IActionResult ScheduleInput()
         {
