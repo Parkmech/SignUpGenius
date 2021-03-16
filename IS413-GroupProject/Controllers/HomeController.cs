@@ -23,28 +23,25 @@ namespace IS413_GroupProject.Controllers
 
         public IActionResult Index()
         {
-            return View(_repository.Tours);
+            return View();
         }
 
         public IActionResult SignUp()
         {
-            return View();
+            return View(_repository.Tours);
         }
         //public IActionResult SignUp(int pageNum)
 
         //{
-        //    return View(new TimeSlotListViewModel.Where()
+        //    return View(new TourListViewModel.Where()
         //    {
-        //        TimeSlot = _repository.TimeSlot.Where(p => date == null || p.date == Date)
-                    //.OrderBy(p => p.Time)
-                    //.Skip((pageNum - 1) * ItemsPerPage)
-                    //.Take(ItemsPerPage),
+        //        Tours = _repository.Tours,
 
-                    //PagingInfo = new PagingInfoClass
+                    //PagingInfo = new PagingInfo
                     //{
                     //  CurrentPage = pageNum,
                     //  ItemsPerPage = ItemsPerPage,
-                    //  TotalNumItems = date == null ? _repository.TimeSlot.Count() : _respository.TimeSlot.Where(x => x.Date == date).Count()
+                    //  TotalNumItems = 84
         //    }) ;
         //}
 
