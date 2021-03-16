@@ -13,10 +13,14 @@ namespace IS413_GroupProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private ITourRepository _repository;
+
+        public int ItemsPerPage = 12;
+
+        public HomeController(ILogger<HomeController> logger, ITourRepository repository)
         {
             _logger = logger;
-            //_repository = repository; /*this is the IEventRepository (Who's in charge of that?')*/
+            _repository = repository; /*this is the ITourRepository*/
         }
 
         public IActionResult Index()
@@ -31,18 +35,15 @@ namespace IS413_GroupProject.Controllers
         //public IActionResult SignUp(int pageNum)
 
         //{
-        //    return View(new TimeSlotListViewModel.Where()
+        //    return View(new TourListViewModel.Where()
         //    {
-        //        TimeSlot = _repository.TimeSlot.Where(p => date == null || p.date == Date)
-                    //.OrderBy(p => p.Time)
-                    //.Skip((pageNum - 1) * ItemsPerPage)
-                    //.Take(ItemsPerPage),
+        //        Tours = _repository.Tours,
 
-                    //PagingInfo = new PagingInfoClass
+                    //PagingInfo = new PagingInfo
                     //{
                     //  CurrentPage = pageNum,
                     //  ItemsPerPage = ItemsPerPage,
-                    //  TotalNumItems = date == null ? _repository.TimeSlot.Count() : _respository.TimeSlot.Where(x => x.Date == date).Count()
+                    //  TotalNumItems = 84
         //    }) ;
         //}
 
