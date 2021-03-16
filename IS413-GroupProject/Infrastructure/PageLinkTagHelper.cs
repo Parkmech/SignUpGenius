@@ -50,7 +50,7 @@ namespace IS413_GroupProject.Infrastructure
                 {
                     TagBuilder tag = new TagBuilder("a");
 
-                    PageUrlValues["pagenum"] = i;
+                    PageUrlValues["pageNum"] = i;
 
                     //here I pass in the page url values instead of i!
 

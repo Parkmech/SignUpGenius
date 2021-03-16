@@ -26,16 +26,18 @@ namespace IS413_GroupProject.Controllers
 
         public IActionResult Index()
         {
-            return View(_repository.Tours);
+            return View();
         }
-        public IActionResult SignUp(int pageNum)
-
     
         public IActionResult SignUp(int pageNum)
         {
             return View(new TourListViewModel
+
             {
-                Tours = _repository.Tours,
+                Tours = _repository.Tours
+                .OrderBy(p => p.TourId)
+                .Skip((pageNum - 1) * ItemsPerPage)
+                .Take(ItemsPerPage),
 
                 PagingInfo = new PagingInfo
                 {
