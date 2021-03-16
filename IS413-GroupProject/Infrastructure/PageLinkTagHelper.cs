@@ -6,21 +6,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using IS413_GroupProject.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-/*
+
 namespace IS413_GroupProject.Infrastructure
 {
-    public class PageLinkTagHelper
+    [HtmlTargetElement("div", Attributes = "page-model")]
+    public class PageLinkTagHelper : TagHelper
     {
-        [HtmlTargetElement("div", Attributes = "page-model")]
-        public class PageLinkTagHelper : TagHelper
-        {
+        
             private IUrlHelperFactory urlHelperFactory;
 
             public PageLinkTagHelper(IUrlHelperFactory hp)
@@ -51,11 +46,11 @@ namespace IS413_GroupProject.Infrastructure
 
                 TagBuilder result = new TagBuilder("div");
 
-                for (int i = 1; i <= PageModel.TotalPages; i++)
+                for (int i = 1; i <= 7; i++)
                 {
                     TagBuilder tag = new TagBuilder("a");
 
-                    PageUrlValues["pagenum"] = i;
+                    PageUrlValues["pageNum"] = i;
 
                     //here I pass in the page url values instead of i!
 
@@ -76,5 +71,3 @@ namespace IS413_GroupProject.Infrastructure
             }
         }
     }
-}
-*/
