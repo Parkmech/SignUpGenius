@@ -26,10 +26,12 @@ namespace IS413_GroupProject.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_repository.Tours);
         }
         public IActionResult SignUp(int pageNum)
 
+    
+        public IActionResult SignUp(int pageNum)
         {
             return View(new TourListViewModel
             {
