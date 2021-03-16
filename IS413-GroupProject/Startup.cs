@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +19,7 @@ namespace IS413_GroupProject
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -27,9 +28,12 @@ namespace IS413_GroupProject
 
             services.AddRazorPages();
 
+            //helps with retaining items in cart in cache/session
             services.AddDistributedMemoryCache();
             services.AddSession();
 
+            //services.AddScoped<Appoinment>(sp => SessionAppointment.GetAppointment(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +58,13 @@ namespace IS413_GroupProject
 
             app.UseAuthorization();
 
+            //Cross-Site-Scripting (Xss) protection
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Xss-Protection", "1");
+                await next();
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -61,9 +72,11 @@ namespace IS413_GroupProject
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
+                endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
             });
+
         }
     }
 }

@@ -1,19 +1,85 @@
 ﻿<!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=content-width" />
-    <title>Appointments</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IS413_GroupProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
-
 <body>
-    <div class="bg-dark text-white p-2">
-        <span class="navbar-brand ml-2">View Appointments</span>
-    </div>
-    <div class="m-1 p-1">
-        @RenderBody()
-    </div>
-</body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">IS413_GroupProject</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="SignUp">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="ViewAppointments">View Appointments</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="container">
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="card my-4">
+                    <h5 class="card-header text-center text-white bg-info">General Tour Instructions</h5>
+                    <div class="card-body small">
+                        <p>Masks are required.</p>
+                        <p>Park on Rosewood (west side of the temple) and meet at the Visitors Center trailer.</p>
+                        <p>Dress casual, except on Sunday</p>
+                    </div>
+                </div>
 
+
+                <div class="card my-4">
+                    <h5 class="card-header text-center text-white bg-info">Special Accomodations</h5>
+                    <div class="card-body small">
+                        <p>Spanish-speaking tours are available on Thursday, Friday, Saturday or Sunday</p>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header text-center text-white bg-info">Available Tours</h5>
+                    <div class="card-body small">
+                        <p>Tour (Outdoor): We have been asked to discontinue outside tours at this time.</p>
+                        <p>Trailer Tour: All tours will be inside the trailer. Masks are required</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-10 pb-3">
+            <main role="main" class="">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - IS413_GroupProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
 </html>
