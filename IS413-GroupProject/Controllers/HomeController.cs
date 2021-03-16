@@ -45,6 +45,12 @@ namespace IS413_GroupProject.Controllers
                     //  TotalNumItems = date == null ? _repository.TimeSlot.Count() : _respository.TimeSlot.Where(x => x.Date == date).Count()
         //    }) ;
         //}
+
+        public IActionResult ScheduleInput()
+        {
+            return View();
+        }
+
         public IActionResult ViewAppointments()
         {
             return View();

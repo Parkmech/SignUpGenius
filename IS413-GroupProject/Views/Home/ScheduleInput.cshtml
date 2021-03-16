@@ -1,0 +1,66 @@
+﻿@page
+@{
+}
+
+<div class="container">
+
+    <form class="well form-horizontal" action=" " method="post" id="contact_form">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Schedule a Tour Today!</legend>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Group Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="first_name" placeholder="First Name" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Size of Group (Number of People)</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="last_name" placeholder=4 class="form-control" type="number">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Phone # (optional)</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input name="phone" placeholder="(801)555-1212" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-info"asp-action="Index" asp-controller="Home">Schedule</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+    </div><!-- /.container -->
