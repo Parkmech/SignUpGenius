@@ -1,0 +1,28 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace IS413_GroupProject.Models
+{
+    public class Tour
+    {
+        [Required]
+        [Key]
+        public int TourId { get; set; }
+
+        [Required]
+        public DateTime AppointmentDate { get; set; }
+
+        [Required]
+        public string TourType { get; set; }
+
+        [Required]
+        public int GroupSize { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
+        [Required]
+        public string Language { get; set; }
+
+    }
+}
