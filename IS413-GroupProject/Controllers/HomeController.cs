@@ -28,7 +28,7 @@ namespace IS413_GroupProject.Controllers
             return View();
         }
 
-        public IActionResult SignUpForm()
+        public IActionResult ScheduleInput()
         {
             return View();
         }
