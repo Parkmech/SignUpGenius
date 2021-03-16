@@ -13,14 +13,17 @@ namespace IS413_GroupProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private iTourRepository _repository;
+
+        public HomeController(ILogger<HomeController> logger, iTourRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_repository.Tours);
         }
 
         public IActionResult SignUp()
