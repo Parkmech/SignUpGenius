@@ -7,7 +7,7 @@
 <h2 class="text-center">Appointments</h2>
 <div class="container">
 
-    @*<table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Date</th>
@@ -20,10 +20,10 @@
             @foreach (var line in Model.Appointment.Lines)
             {
                 <tr>
-                    <td class="text-left">@line.Appointment.Date</td>
-                    <td class="text-left">@line.Appointment.Time</td>
-                    <td class="text-center">$@line.Appointment.Type</td>
-                    <td class="text-right">@line.Appointment.GroupName</td>
+                    <td class="text-left">@line.Tour.AppointmentDate.ToString("MMMM dd, yyyy")</td>
+                    <td class="text-left">@line.Tour.Description</td>
+                    <td class="text-center">$@line.Tour.TourType</td>
+                    <td class="text-right">@line.Tour.Language</td>
                 </tr>
             }
         </tbody>
@@ -32,5 +32,5 @@
     <div class="text-center">
         <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Searching</a>
 
-    </div>*@
+    </div>
 </div>
