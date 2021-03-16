@@ -13,19 +13,17 @@ namespace IS413_GroupProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private ITourRepository _repository;
+        private iTourRepository _repository;
 
-        public int ItemsPerPage = 12;
-
-        public HomeController(ILogger<HomeController> logger, ITourRepository repository)
+        public HomeController(ILogger<HomeController> logger, iTourRepository repository)
         {
             _logger = logger;
-            _repository = repository; /*this is the ITourRepository*/
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_repository.Tours);
         }
 
         public IActionResult SignUp()
