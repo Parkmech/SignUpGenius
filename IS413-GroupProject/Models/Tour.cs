@@ -24,5 +24,7 @@ namespace IS413_GroupProject.Models
         [Required]
         public string Language { get; set; }
 
+        public Group Group { get; set; }
+        
     }
 }
