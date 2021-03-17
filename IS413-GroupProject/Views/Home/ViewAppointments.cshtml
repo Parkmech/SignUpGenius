@@ -13,6 +13,7 @@
                 <th>Time</th>
                 <th>Type</th>
                 <th>Description</th>
+                <th>Language</th>
                 <th>Group Name</th>
                 <th>Group Size</th>
             </tr>
@@ -22,9 +23,10 @@
             {
             <tr>
                 <td class="text-left">@tour.AppointmentDate.ToString("MMMM dd, yyyy")</td>
-                <td class="text-left">@tour.AppointmentDate.ToString("MMMM dd, yyyy")</td>
+                <td class="text-left">@tour.AppointmentDate.ToString("h:mm tt")</td>
                 <td class="text-center">@tour.TourType</td>
                 <td class="text-left">@tour.Description</td>
+                <td class="text-right">@tour.Language</td>
                 <td class="text-right">@tour.Language</td>
                 <td class="text-right">@tour.Language</td>
             </tr>
