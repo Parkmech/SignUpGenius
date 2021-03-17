@@ -18,10 +18,13 @@ namespace IS413_GroupProject.Controllers
 
         public int ItemsPerPage = 12;
 
-        public HomeController(ILogger<HomeController> logger, iTourRepository repository)
+        private TourDbContext _context;
+
+        public HomeController(ILogger<HomeController> logger, iTourRepository repository, TourDbContext context)
         {
             _logger = logger;
             _repository = repository;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -36,6 +39,7 @@ namespace IS413_GroupProject.Controllers
             {
                 Tours = _repository.Tours
                 .OrderBy(p => p.AppointmentDate)
+                .Where(p => p.Groups == null)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
@@ -43,22 +47,23 @@ namespace IS413_GroupProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = 84
+                    TotalNumItems = _repository.Tours.Where(p => p.Groups == null).Count()
                 }
             });
         }
-
+        [HttpPost]
         public IActionResult ScheduleInput()
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult ViewAppointments(int pageNum)
         {
             return View(new TourListViewModel
-            {
+
                 Tours = _repository.Tours
                 .OrderBy(p => p.AppointmentDate)
+                .Where(p => p.Groups != null)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
@@ -66,9 +71,25 @@ namespace IS413_GroupProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = 84
+                    TotalNumItems = _repository.Tours.Where(p => p.Groups != null).Count()
                 }
             });
+        }
+
+        [HttpPost]
+        public IActionResult AddGroups(Group group)
+        {
+            //Here is where we need to create the object with teh model
+            if (ModelState.IsValid)
+            {
+                _context.Group.Add(group);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("SignUp");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
