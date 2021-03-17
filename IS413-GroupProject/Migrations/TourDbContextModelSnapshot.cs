@@ -16,6 +16,31 @@ namespace IS413_GroupProject.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.13");
 
+            modelBuilder.Entity("IS413_GroupProject.Models.Group", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("NumPeople")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PhoneNum")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("GroupId");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("IS413_GroupProject.Models.Tour", b =>
                 {
                     b.Property<int>("TourId")
@@ -28,6 +53,9 @@ namespace IS413_GroupProject.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("GroupSize")
                         .HasColumnType("INTEGER");

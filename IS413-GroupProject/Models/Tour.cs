@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace IS413_GroupProject.Models
@@ -24,7 +25,8 @@ namespace IS413_GroupProject.Models
         [Required]
         public string Language { get; set; }
 
-        public Group Group { get; set; }
+        [ForeignKey("Group")]
+        public int? GroupId { get; set; }
         
     }
 }
