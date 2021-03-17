@@ -14,5 +14,7 @@ namespace IS413_GroupProject.Models
         }
 
         public IQueryable<Tour> Tours => _context.Tours;
+
+        public IQueryable<Group> Groups => _context.Groups;
     }
 }

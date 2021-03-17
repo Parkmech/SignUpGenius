@@ -6,6 +6,7 @@ namespace IS413_GroupProject.Models
     public class Group
     {
         [Key]
+        [Required]
         public int GroupId { get; set; }
 
         [Required]
