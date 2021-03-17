@@ -32,6 +32,7 @@ namespace IS413_GroupProject.Controllers
             return View();
         }
     
+        [HttpGet]
         public IActionResult SignUp(int pageNum)
         {
             return View(new TourListViewModel
@@ -39,7 +40,7 @@ namespace IS413_GroupProject.Controllers
             {
                 Tours = _repository.Tours
                 .OrderBy(p => p.AppointmentDate)
-                .Where(p => p.Groups == null)
+                .Where(p => p.GroupId == null)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
@@ -47,10 +48,27 @@ namespace IS413_GroupProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = _repository.Tours.Where(p => p.Groups == null).Count()
+                    TotalNumItems = _repository.Tours.Where(p => p.GroupId == null).Count()
                 }
             });
         }
+
+        [HttpPost]
+        public IActionResult SignUp(Group group)
+        {
+            //Here is where we need to create the object with teh model
+            if (ModelState.IsValid)
+            {
+                _context.Groups.Add(group);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("ScheduleInput");
+            }
+        }
+
         [HttpPost]
         public IActionResult ScheduleInput()
         {
@@ -60,10 +78,10 @@ namespace IS413_GroupProject.Controllers
         public IActionResult ViewAppointments(int pageNum)
         {
             return View(new TourListViewModel
-
+            { 
                 Tours = _repository.Tours
                 .OrderBy(p => p.AppointmentDate)
-                .Where(p => p.Groups != null)
+                .Where(p => p.GroupId != null)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
@@ -71,7 +89,7 @@ namespace IS413_GroupProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = _repository.Tours.Where(p => p.Groups != null).Count()
+                    TotalNumItems = _repository.Tours.Where(p => p.GroupId != null).Count()
                 }
             });
         }
@@ -82,7 +100,7 @@ namespace IS413_GroupProject.Controllers
             //Here is where we need to create the object with teh model
             if (ModelState.IsValid)
             {
-                _context.Group.Add(group);
+                _context.Groups.Add(group);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }

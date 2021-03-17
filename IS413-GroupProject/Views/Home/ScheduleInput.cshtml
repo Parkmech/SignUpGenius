@@ -2,9 +2,11 @@
 @{
 }
 
+@model IS413_GroupProject.Models.Group
+
 <div class="container">
 
-    <form class="well form-horizontal" action=" " method="post" id="contact_form">
+    <form class="well form-horizontal" asp-action="SignUp" method="post" id="contact_form">
         <fieldset>
 
             <!-- Form Name -->
@@ -13,6 +15,7 @@
             <!-- Text input-->
 
             <div class="form-group">
+                @*asp-for="GroupName"*@
                 <label class="col-md-4 control-label">Group Name</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
@@ -56,11 +59,12 @@
             <div class="form-group">
                 <label class="col-md-4 control-label"></label>
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-info" asp-action="Index" asp-controller="Home">Schedule</button>
+                    <button type="submit" class="btn btn-info" asp-action="SignUp" asp-controller="Home">Schedule</button>
                 </div>
             </div>
 
         </fieldset>
     </form>
+    <div asp-validation-summary="All"></div>
 </div>
 <!--  </div> /.container -->
