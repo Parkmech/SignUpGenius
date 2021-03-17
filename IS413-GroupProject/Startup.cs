@@ -67,13 +67,6 @@ namespace IS413_GroupProject
 
             app.UseAuthorization();
 
-            //Cross-Site-Scripting (Xss) protection
-            app.Use(async (context, next) =>
-            {
-                context.Response.Headers.Add("X-Xss-Protection", "1");
-                await next();
-            });
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

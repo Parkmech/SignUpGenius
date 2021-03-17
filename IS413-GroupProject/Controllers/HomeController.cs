@@ -53,9 +53,22 @@ namespace IS413_GroupProject.Controllers
             return View();
         }
 
-        public IActionResult ViewAppointments()
+        public IActionResult ViewAppointments(int pageNum)
         {
-            return View();
+            return View(new TourListViewModel
+            {
+                Tours = _repository.Tours
+                .OrderBy(p => p.AppointmentDate)
+                .Skip((pageNum - 1) * ItemsPerPage)
+                .Take(ItemsPerPage),
+
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = ItemsPerPage,
+                    TotalNumItems = 84
+                }
+            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -3,4 +3,28 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>View Appointments</p>
+@model IS413_GroupProject.Models.ViewModels.TourListViewModel
+<div class="container">
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Group Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tour in Model.Tours)
+            {
+                <tr>
+                    <td class="text-left">@tour.AppointmentDate.ToString("MMMM dd, yyyy")</td>
+                    <td class="text-left">@tour.Description</td>
+                    <td class="text-center">@tour.TourType</td>
+                    <td class="text-right">@tour.Language</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
