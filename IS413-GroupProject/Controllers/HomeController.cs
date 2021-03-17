@@ -35,7 +35,7 @@ namespace IS413_GroupProject.Controllers
 
             {
                 Tours = _repository.Tours
-                .OrderBy(p => p.TourId)
+                .OrderBy(p => p.AppointmentDate)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
