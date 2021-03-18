@@ -6,51 +6,51 @@
 
 <div class="container">
 
-    <form class="well form-horizontal" asp-action="SignUp" method="post" id="contact_form">
+    <form class="well form-horizontal" asp-action="SignUp" method="post" id="group_form">
         <fieldset>
 
             <!-- Form Name -->
             <legend>Schedule a Tour Today!</legend>
 
-            <!-- Text input-->
+            <!--Group Name-->
 
             <div class="form-group">
                 @*asp-for="GroupName"*@
                 <label class="col-md-4 control-label">Group Name</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="first_name" placeholder="First Name" class="form-control" type="text">
+                        <input name="group_name" placeholder="First Name" class="form-control" type="text" asp-for="GroupName">
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Number of people -->
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Size of Group (Number of People)</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="last_name" placeholder=4 class="form-control" type="number">
+                        <input name="group_size" placeholder=4 class="form-control" type="number" asp-for="NumPeople">
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Email address -->
             <div class="form-group">
                 <label class="col-md-4 control-label">E-Mail</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
+                        <input name="email" placeholder="E-Mail Address" class="form-control" type="text" asp-for="Email">
                     </div>
                 </div>
             </div>
-            <!-- Text input-->
+            <!-- Phone number -->
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Phone # (optional)</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="phone" placeholder="(801)555-1212" class="form-control" type="text">
+                        <input name="phone" placeholder="(801)555-1212" class="form-control" type="text" asp-for="PhoneNum">
                     </div>
                 </div>
             </div>

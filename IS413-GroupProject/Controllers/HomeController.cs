@@ -56,7 +56,7 @@ namespace IS413_GroupProject.Controllers
         [HttpPost]
         public IActionResult SignUp(Group group)
         {
-            //Here is where we need to create the object with teh model
+            //Here is where we need to create the object with the model
             if (ModelState.IsValid)
             {
                 _context.Groups.Add(group);
@@ -74,6 +74,7 @@ namespace IS413_GroupProject.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public IActionResult ViewAppointments(int pageNum)
         {
