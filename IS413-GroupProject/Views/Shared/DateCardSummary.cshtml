@@ -1,8 +1,6 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,9 +28,8 @@
                     <li class="list-group-item ">Description: @Model.Description</li>
                 </ul>
 
-                <form method="post" asp-action="ScheduleInput">
-                    <p hidden id="TourDate" name="TourDate">@Model.AppointmentDate</p>
-                    <p hidden id="TourId" name="TourId">@Model.TourId</p>
+                <form method="post" asp-action="DateCardSummary" asp-controller="home">
+                    <input type="hidden" asp-for="AppointmentDate" name="AppointmentDate" value="@Model.AppointmentDate"/>
                     <button type="submit" class="btn btn-info col-12">Schedule</button>
                 </form>
 

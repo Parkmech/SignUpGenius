@@ -20,6 +20,8 @@ namespace IS413_GroupProject.Controllers
 
         private TourDbContext _context;
 
+        private static DateTime ApptDate { get; set; }
+
         public HomeController(ILogger<HomeController> logger, iTourRepository repository, TourDbContext context)
         {
             _logger = logger;
@@ -54,26 +56,39 @@ namespace IS413_GroupProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUp(Group group)
+        public IActionResult DateCardSummary(DateTime AppointmentDate)
         {
-            //Here is where we need to create the object with the model
+            ViewData["Date"] = AppointmentDate;
+            ApptDate = AppointmentDate;
+            HttpContext.Items[ApptDate] = AppointmentDate; 
+
+            return View("ScheduleInput");
+        }
+
+        [HttpPost]
+        public IActionResult ScheduleInput(Group group)
+        {
+
+            //Here is where we need to create the object with teh model
             if (ModelState.IsValid)
             {
                 _context.Groups.Add(group);
                 _context.SaveChanges();
+
+                ApptDate = (DateTime)HttpContext.Items[ApptDate];
+
+                _context.Tours.Where(x => x.AppointmentDate == ApptDate)
+                .FirstOrDefault().GroupId = _context.Groups.OrderByDescending(x => x.GroupId).FirstOrDefault().GroupId;
+                _context.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             else
             {
-                return View("ScheduleInput");
+                return View("SignUp");
             }
         }
-
-        [HttpPost]
-        public IActionResult ScheduleInput()
-        {
-            return View();
-        }
+    
 
         [HttpGet]
         public IActionResult ViewAppointments(int pageNum)

@@ -1,16 +1,17 @@
 ﻿@{
+    DateTime ApptDate = (DateTime)ViewData["Date"];
 }
 
 @model IS413_GroupProject.Models.Group
 
 <div class="container">
-
-    <form class="well form-horizontal" asp-action="SignUp" method="post" id="group_form">
+   
+    <form class="well form-horizontal" asp-action="ScheduleInput" method="post" id="group_form">
         <fieldset>
-
+            
             <!-- Form Name -->
             <legend>Schedule a Tour Today!</legend>
-
+            <div>You are currently scheduling a tour for @ApptDate.ToString("MMMM,dd,yyyy") at @ApptDate.ToString("h:mm tt")</div>
             <!--Group Name-->
 
             <div class="form-group">
@@ -18,7 +19,7 @@
                 <label class="col-md-4 control-label">Group Name</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="group_name" placeholder="First Name" class="form-control" type="text" asp-for="GroupName">
+                        <input placeholder="Group Name" class="form-control" type="text" asp-for="GroupName">
                     </div>
                 </div>
             </div>
@@ -29,7 +30,7 @@
                 <label class="col-md-4 control-label">Size of Group (Number of People)</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="group_size" placeholder=4 class="form-control" type="number" asp-for="NumPeople">
+                        <input placeholder=4 class="form-control" type="number" asp-for="NumPeople">
                     </div>
                 </div>
             </div>
@@ -39,7 +40,7 @@
                 <label class="col-md-4 control-label">E-Mail</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="email" placeholder="E-Mail Address" class="form-control" type="text" asp-for="Email">
+                        <input placeholder="E-Mail Address" class="form-control" type="text" asp-for="Email">
                     </div>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                 <label class="col-md-4 control-label">Phone # (optional)</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="phone" placeholder="(801)555-1212" class="form-control" type="text" asp-for="PhoneNum">
+                        <input  placeholder="(801)555-1212" class="form-control" type="text" asp-for="PhoneNum">
                     </div>
                 </div>
             </div>
