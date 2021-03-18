@@ -16,12 +16,17 @@ namespace IS413_GroupProject.Controllers
 
         private iTourRepository _repository;
 
-        public int ItemsPerPage = 12;
+        public int ItemsPerPage = 10;
 
-        public HomeController(ILogger<HomeController> logger, iTourRepository repository)
+        private TourDbContext _context;
+
+        private static DateTime ApptDate { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, iTourRepository repository, TourDbContext context)
         {
             _logger = logger;
             _repository = repository;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -29,13 +34,17 @@ namespace IS413_GroupProject.Controllers
             return View();
         }
     
+        [HttpGet]
         public IActionResult SignUp(int pageNum)
         {
-            return View(new TourListViewModel
+            return View(
+
+            new TourListViewModel
 
             {
                 Tours = _repository.Tours
                 .OrderBy(p => p.AppointmentDate)
+                .Where(p => p.Available == true)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
@@ -43,20 +52,63 @@ namespace IS413_GroupProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = 84
+                    TotalNumItems = _repository.Tours.Where(p => p.Available == true).Count()
                 }
             });
         }
 
-        public IActionResult ScheduleInput()
+        [HttpPost]
+        public IActionResult DateCardSummary(DateTime AppointmentDate, int TourId)
         {
-            return View();
+            ViewData["Date"] = AppointmentDate;
+            ViewBag.tourId = TourId;
+
+            return View("ScheduleInput");
         }
 
-        public IActionResult ViewAppointments()
+        [HttpPost]
+        public IActionResult ScheduleInput(Group group)
         {
-            return View();
+
+            //Here is where we need to create the object with the model
+
+            if (ModelState.IsValid)
+            {
+                _context.Groups.Add(group);
+                _context.Tours.Where(x => x.TourId == group.TourId).FirstOrDefault().Available = false;
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("SignUp");
+            }
         }
+
+
+        [HttpGet]
+        public IActionResult ViewAppointments(int pageNum)
+        {
+            return View(new TourListViewModel
+            {
+                Tours = _repository.Tours
+                .OrderBy(p => p.AppointmentDate)
+                .Where(p => p.Available != true)
+                .Skip((pageNum - 1) * ItemsPerPage)
+                .Take(ItemsPerPage),
+
+                Groups = _repository.Groups,
+
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = ItemsPerPage,
+                    TotalNumItems = _repository.Tours.Where(p => p.Available != true).Count()
+                }
+            });
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

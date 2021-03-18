@@ -13,7 +13,7 @@ namespace IS413_GroupProject.Models.ViewModels
 
         public int CurrentPage { get; set; }
 
-        //public int TotalPages => (int)(Math.Ceiling((decimal)TotalNumItems / ItemsPerPage));
+        public int TotalPages => (int)(Math.Ceiling((decimal)TotalNumItems / ItemsPerPage));
     }
 }
 

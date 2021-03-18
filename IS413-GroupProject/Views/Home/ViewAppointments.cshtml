@@ -1,6 +1,37 @@
-﻿@{
+﻿@model IS413_GroupProject.Models.ViewModels.TourListViewModel
+
+@{
     ViewData["Title"] = "View Appointments";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>View Appointments</p>
+<div class="container">
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Language</th>
+                <th>Group Name</th>
+                <th>Group Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tour in Model.Tours)
+            {
+            <tr>
+                <td class="text-left">@tour.AppointmentDate.ToString("MMMM dd, yyyy")</td>
+                <td class="text-left">@tour.AppointmentDate.ToString("h:mm tt")</td>
+                <td class="text-center">@tour.TourType</td>
+                <td class="text-left">@tour.Description</td>
+                <td class="text-right">@tour.Language</td>
+                <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().GroupName</td>
+                <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().NumPeople</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

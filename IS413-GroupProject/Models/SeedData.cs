@@ -22,6 +22,8 @@ namespace IS413_GroupProject.Models
             {
                 context.Tours.AddRange(
 
+                    //Take time to admire all this beautiful seed data. A+ work
+
                     new Tour
                     {
                        AppointmentDate = new DateTime(2021, 4, 5, 8, 0, 0),

@@ -1,57 +1,62 @@
-﻿@page
-@{
+﻿@{
+    DateTime ApptDate = (DateTime)ViewData["Date"];
+    int TourId = (int)ViewBag.TourId;
 }
 
+@model IS413_GroupProject.Models.Group
+
 <div class="container">
-
-    <form class="well form-horizontal" asp-action="ViewAppointments" method="post" id="contact_form">
+   
+    <form class="well form-horizontal" asp-action="ScheduleInput" method="post" id="group_form">
         <fieldset>
-
+            
             <!-- Form Name -->
             <legend>Schedule a Tour Today!</legend>
-
-            <!-- <h3>You are scheduling a tour for @*@Model.AppointmentDate.ToString("MMMM,dd,yyyy") at @Model.AppointmentDate.ToString("h:mm")</h3> *@-->
-            <!-- Text input-->
+            <div>You are currently scheduling a tour for @ApptDate.ToString("MMMM,dd,yyyy") at @ApptDate.ToString("h:mm tt")</div>
+            <!--Group Name-->
 
             <div class="form-group">
+                @*asp-for="GroupName"*@
                 <label class="col-md-4 control-label">Group Name</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="first_name" placeholder="First Name" class="form-control" type="text">
+                        <input placeholder="Group Name" class="form-control" type="text" asp-for="GroupName">
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Number of people -->
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Size of Group (Number of People)</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="last_name" placeholder=4 class="form-control" type="number">
+                        <input placeholder=4 class="form-control" type="number" asp-for="NumPeople">
                     </div>
                 </div>
             </div>
 
-            <!-- Text input-->
+            <!-- Email address -->
             <div class="form-group">
                 <label class="col-md-4 control-label">E-Mail</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="email" placeholder="E-Mail Address" class="form-control" type="text">
+                        <input placeholder="E-Mail Address" class="form-control" type="text" asp-for="Email">
                     </div>
                 </div>
             </div>
-            <!-- Text input-->
+            <!-- Phone number -->
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Phone # (optional)</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <input name="phone" placeholder="(801)555-1212" class="form-control" type="text">
+                        <input  placeholder="(801)555-1212" class="form-control" type="text" asp-for="PhoneNum">
                     </div>
                 </div>
             </div>
+
+            <input type="hidden" asp-for="TourId" value="@TourId" /> 
 
             <!-- Button -->
             <div class="form-group">
@@ -63,5 +68,6 @@
 
         </fieldset>
     </form>
+    <div asp-validation-summary="All"></div>
 </div>
-    </div><!-- /.container -->
+<!--  </div> /.container -->

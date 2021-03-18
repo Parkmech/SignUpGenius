@@ -11,6 +11,8 @@ namespace IS413_GroupProject.Models
         }
 
         public DbSet<Tour> Tours { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
     }
 }
 

@@ -3,10 +3,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IS413_GroupProject.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    GroupId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    GroupName = table.Column<string>(nullable: false),
+                    NumPeople = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    PhoneNum = table.Column<string>(nullable: true),
+                    TourId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.GroupId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Tours",
                 columns: table => new
@@ -17,7 +34,8 @@ namespace IS413_GroupProject.Migrations
                     TourType = table.Column<string>(nullable: false),
                     GroupSize = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    Language = table.Column<string>(nullable: false)
+                    Language = table.Column<string>(nullable: false),
+                    Available = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,6 +45,9 @@ namespace IS413_GroupProject.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Groups");
+
             migrationBuilder.DropTable(
                 name: "Tours");
         }
