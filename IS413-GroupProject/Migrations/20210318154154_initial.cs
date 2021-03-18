@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IS413_GroupProject.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,8 @@ namespace IS413_GroupProject.Migrations
                     GroupName = table.Column<string>(nullable: false),
                     NumPeople = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    PhoneNum = table.Column<string>(nullable: true)
+                    PhoneNum = table.Column<string>(nullable: true),
+                    TourId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +35,7 @@ namespace IS413_GroupProject.Migrations
                     GroupSize = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     Language = table.Column<string>(nullable: false),
-                    GroupId = table.Column<int>(nullable: true)
+                    Available = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

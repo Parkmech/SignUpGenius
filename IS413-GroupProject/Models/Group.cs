@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IS413_GroupProject.Models
 {
     public class Group
     {
-        [Key]
         [Required]
+        [Key]
         public int GroupId { get; set; }
 
         [Required]
@@ -19,5 +20,9 @@ namespace IS413_GroupProject.Models
         public string Email { get; set; }
 
         public string PhoneNum { get; set; }
+
+        [Required]
+        [ForeignKey("Tour")]
+        public int TourId { get; set; }
     }
 }

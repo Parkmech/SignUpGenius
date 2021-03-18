@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IS413_GroupProject.Migrations
 {
     [DbContext(typeof(TourDbContext))]
-    [Migration("20210317173602_Initial")]
-    partial class Initial
+    [Migration("20210318154154_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,9 @@ namespace IS413_GroupProject.Migrations
                     b.Property<string>("PhoneNum")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("TourId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("GroupId");
 
                     b.ToTable("Groups");
@@ -52,12 +55,12 @@ namespace IS413_GroupProject.Migrations
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Available")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("GroupId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("GroupSize")
                         .HasColumnType("INTEGER");

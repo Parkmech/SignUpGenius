@@ -30,6 +30,7 @@
 
                 <form method="post" asp-action="DateCardSummary" asp-controller="home">
                     <input type="hidden" asp-for="AppointmentDate" name="AppointmentDate" value="@Model.AppointmentDate"/>
+                    <input type="hidden" asp-for="TourId" name="TourId" value="@Model.TourId" />
                     <button type="submit" class="btn btn-info col-12">Schedule</button>
                 </form>
 

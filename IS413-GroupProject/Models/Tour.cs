@@ -25,8 +25,8 @@ namespace IS413_GroupProject.Models
         [Required]
         public string Language { get; set; }
 
-        [ForeignKey("Group")]
-        public int? GroupId { get; set; }
+        [Required]
+        public bool Available { get; set; } = true;
         
     }
 }

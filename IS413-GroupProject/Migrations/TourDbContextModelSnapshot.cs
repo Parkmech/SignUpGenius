@@ -36,6 +36,9 @@ namespace IS413_GroupProject.Migrations
                     b.Property<string>("PhoneNum")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("TourId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("GroupId");
 
                     b.ToTable("Groups");
@@ -50,12 +53,12 @@ namespace IS413_GroupProject.Migrations
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Available")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("GroupId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("GroupSize")
                         .HasColumnType("INTEGER");

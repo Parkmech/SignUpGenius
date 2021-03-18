@@ -1,5 +1,6 @@
 ﻿@{
     DateTime ApptDate = (DateTime)ViewData["Date"];
+    int TourId = (int)ViewBag.TourId;
 }
 
 @model IS413_GroupProject.Models.Group
@@ -54,6 +55,8 @@
                     </div>
                 </div>
             </div>
+
+            <input type="hidden" asp-for="TourId" value="@TourId" /> 
 
             <!-- Button -->
             <div class="form-group">

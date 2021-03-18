@@ -37,12 +37,14 @@ namespace IS413_GroupProject.Controllers
         [HttpGet]
         public IActionResult SignUp(int pageNum)
         {
-            return View(new TourListViewModel
+            return View(
+
+            new TourListViewModel
 
             {
                 Tours = _repository.Tours
                 .OrderBy(p => p.AppointmentDate)
-                .Where(p => p.GroupId == null)
+                .Where(p => p.Available == true)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
@@ -50,17 +52,16 @@ namespace IS413_GroupProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = _repository.Tours.Where(p => p.GroupId == null).Count()
+                    TotalNumItems = _repository.Tours.Where(p => p.Available == true).Count()
                 }
             });
         }
 
         [HttpPost]
-        public IActionResult DateCardSummary(DateTime AppointmentDate)
+        public IActionResult DateCardSummary(DateTime AppointmentDate, int TourId)
         {
             ViewData["Date"] = AppointmentDate;
-            ApptDate = AppointmentDate;
-            HttpContext.Items[ApptDate] = AppointmentDate; 
+            ViewBag.tourId = TourId;
 
             return View("ScheduleInput");
         }
@@ -69,16 +70,12 @@ namespace IS413_GroupProject.Controllers
         public IActionResult ScheduleInput(Group group)
         {
 
-            //Here is where we need to create the object with teh model
+            //Here is where we need to create the object with the model
+
             if (ModelState.IsValid)
             {
                 _context.Groups.Add(group);
-                _context.SaveChanges();
-
-                ApptDate = (DateTime)HttpContext.Items[ApptDate];
-
-                _context.Tours.Where(x => x.AppointmentDate == ApptDate)
-                .FirstOrDefault().GroupId = _context.Groups.OrderByDescending(x => x.GroupId).FirstOrDefault().GroupId;
+                _context.Tours.Where(x => x.TourId == group.TourId).FirstOrDefault().Available = false;
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -88,16 +85,16 @@ namespace IS413_GroupProject.Controllers
                 return View("SignUp");
             }
         }
-    
+
 
         [HttpGet]
         public IActionResult ViewAppointments(int pageNum)
         {
             return View(new TourListViewModel
-            { 
+            {
                 Tours = _repository.Tours
                 .OrderBy(p => p.AppointmentDate)
-                .Where(p => p.GroupId != null)
+                .Where(p => p.Available != true)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
 
@@ -105,26 +102,11 @@ namespace IS413_GroupProject.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = ItemsPerPage,
-                    TotalNumItems = _repository.Tours.Where(p => p.GroupId != null).Count()
+                    TotalNumItems = _repository.Tours.Where(p => p.Available != true).Count()
                 }
             });
         }
 
-        [HttpPost]
-        public IActionResult AddGroups(Group group)
-        {
-            //Here is where we need to create the object with teh model
-            if (ModelState.IsValid)
-            {
-                _context.Groups.Add(group);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View("SignUp");
-            }
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
