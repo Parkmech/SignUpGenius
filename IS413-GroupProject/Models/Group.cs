@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-//separate class for group that has a FK to link it the the Tour table
-
 namespace IS413_GroupProject.Models
 {
     public class Group

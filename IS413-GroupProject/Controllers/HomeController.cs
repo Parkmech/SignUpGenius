@@ -33,7 +33,6 @@ namespace IS413_GroupProject.Controllers
         {
             return View();
         }
-        //this is the signup action, uses pagination so we're passing in the pageNum variable to get the current page
     
         [HttpGet]
         public IActionResult SignUp(int pageNum)
@@ -57,7 +56,6 @@ namespace IS413_GroupProject.Controllers
                 }
             });
         }
-        //this action below pulls the date from a hidden form in the card and passes it to the next page, schedule input
 
         [HttpPost]
         public IActionResult DateCardSummary(DateTime AppointmentDate, int TourId)
@@ -67,7 +65,6 @@ namespace IS413_GroupProject.Controllers
 
             return View("ScheduleInput");
         }
-        //this action below schedules the input, checks if the model is valid, and updates the database
 
         [HttpPost]
         public IActionResult ScheduleInput(Group group)
@@ -88,7 +85,7 @@ namespace IS413_GroupProject.Controllers
                 return View("SignUp");
             }
         }
-        //this action below is similar to the ViewAppointments, but instead of filtering by if an appointement is available, it's filtering by when it is not available (booked)
+
 
         [HttpGet]
         public IActionResult ViewAppointments(int pageNum)

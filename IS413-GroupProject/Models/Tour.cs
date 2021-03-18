@@ -2,8 +2,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-//table for all the info necessary to create a Tour/appointment object
-
 namespace IS413_GroupProject.Models
 {
     public class Tour
