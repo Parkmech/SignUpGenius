@@ -71,7 +71,6 @@ namespace IS413_GroupProject.Controllers
         {
 
             //Here is where we need to create the object with the model
-
             if (ModelState.IsValid)
             {
                 _context.Groups.Add(group);
@@ -81,8 +80,11 @@ namespace IS413_GroupProject.Controllers
                 return RedirectToAction("Index");
             }
             else
-            {
-                return View("SignUp");
+            { 
+                ViewData["Date"] = _context.Tours.Where(x => x.TourId == group.TourId).FirstOrDefault().AppointmentDate;
+                ViewBag.tourId = group.TourId; 
+
+                return View("ScheduleInput", group);
             }
         }
 
