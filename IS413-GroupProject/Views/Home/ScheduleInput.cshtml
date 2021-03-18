@@ -4,12 +4,13 @@
 
 <div class="container">
 
-    <form class="well form-horizontal" action=" " method="post" id="contact_form">
+    <form class="well form-horizontal" asp-action="ViewAppointments" method="post" id="contact_form">
         <fieldset>
 
             <!-- Form Name -->
             <legend>Schedule a Tour Today!</legend>
 
+            <!-- <h3>You are scheduling a tour for @*@Model.AppointmentDate.ToString("MMMM,dd,yyyy") at @Model.AppointmentDate.ToString("h:mm")</h3> *@-->
             <!-- Text input-->
 
             <div class="form-group">
@@ -56,7 +57,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label"></label>
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-info"asp-action="Index" asp-controller="Home">Schedule</button>
+                    <button type="submit" class="btn btn-info">Schedule</button>
                 </div>
             </div>
 
