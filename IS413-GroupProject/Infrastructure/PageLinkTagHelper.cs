@@ -46,7 +46,7 @@ namespace IS413_GroupProject.Infrastructure
 
                 TagBuilder result = new TagBuilder("div");
 
-                for (int i = 1; i <= 7; i++)
+                for (int i = 1; i <= PageModel.TotalPages; i++)
                 {
                     TagBuilder tag = new TagBuilder("a");
 

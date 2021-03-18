@@ -16,7 +16,7 @@ namespace IS413_GroupProject.Controllers
 
         private iTourRepository _repository;
 
-        public int ItemsPerPage = 12;
+        public int ItemsPerPage = 10;
 
         private TourDbContext _context;
 
@@ -97,6 +97,8 @@ namespace IS413_GroupProject.Controllers
                 .Where(p => p.Available != true)
                 .Skip((pageNum - 1) * ItemsPerPage)
                 .Take(ItemsPerPage),
+
+                Groups = _repository.Groups,
 
                 PagingInfo = new PagingInfo
                 {

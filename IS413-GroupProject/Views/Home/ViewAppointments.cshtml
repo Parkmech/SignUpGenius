@@ -1,9 +1,10 @@
-﻿@{
+﻿@model IS413_GroupProject.Models.ViewModels.TourListViewModel
+
+@{
     ViewData["Title"] = "View Appointments";
 }
 <h1>@ViewData["Title"]</h1>
 
-@model IS413_GroupProject.Models.ViewModels.TourListViewModel
 <div class="container">
 
     <table class="table table-bordered table-striped">
@@ -27,8 +28,8 @@
                 <td class="text-center">@tour.TourType</td>
                 <td class="text-left">@tour.Description</td>
                 <td class="text-right">@tour.Language</td>
-                <td class="text-right">@tour.Language</td>
-                <td class="text-right">@tour.Language</td>
+                <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().GroupName</td>
+                <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().NumPeople</td>
             </tr>
             }
         </tbody>
