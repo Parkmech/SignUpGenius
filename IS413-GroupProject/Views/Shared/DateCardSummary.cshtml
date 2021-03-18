@@ -31,7 +31,8 @@
                 </ul>
 
                 <form method="post" asp-action="ScheduleInput">
-                    <p hidden id="tourDate" name="tourDate">@Model.AppointmentDate</p>
+                    <p hidden id="TourDate" name="TourDate">@Model.AppointmentDate</p>
+                    <p hidden id="TourId" name="TourId">@Model.TourId</p>
                     <button type="submit" class="btn btn-info col-12">Schedule</button>
                 </form>
 
