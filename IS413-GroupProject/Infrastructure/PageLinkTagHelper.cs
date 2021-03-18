@@ -10,6 +10,8 @@ using IS413_GroupProject.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 
+//This is a class to help create a tag helper that creates page links on the fly
+
 namespace IS413_GroupProject.Infrastructure
 {
     [HtmlTargetElement("div", Attributes = "page-model")]
