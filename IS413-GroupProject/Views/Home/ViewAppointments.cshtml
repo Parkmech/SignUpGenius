@@ -1,9 +1,10 @@
-﻿@model IS413_GroupProject.Models.ViewModels.TourListViewModel
+﻿<!--Bring in TourListViewModel which has tour and group information-->
+@model IS413_GroupProject.Models.ViewModels.TourListViewModel
 
 @{
     ViewData["Title"] = "View Appointments";
 }
-<h1>@ViewData["Title"]</h1>
+<h2 class="display-4">@ViewData["Title"]</h2>
 
 <div class="container">
 
@@ -20,17 +21,20 @@
             </tr>
         </thead>
         <tbody>
+            <!--This loop iterates through the tours in the Tour model and displays group information that was entered into the Group model-->
             @foreach (var tour in Model.Tours)
             {
-            <tr>
-                <td class="text-left">@tour.AppointmentDate.ToString("MMMM dd, yyyy")</td>
-                <td class="text-left">@tour.AppointmentDate.ToString("h:mm tt")</td>
-                <td class="text-center">@tour.TourType</td>
-                <td class="text-left">@tour.Description</td>
-                <td class="text-right">@tour.Language</td>
-                <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().GroupName</td>
-                <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().NumPeople</td>
-            </tr>
+                <tr>
+                    <!--Tour info-->
+                    <td class="text-left">@tour.AppointmentDate.ToString("MMMM dd, yyyy")</td>
+                    <td class="text-left">@tour.AppointmentDate.ToString("h:mm tt")</td>
+                    <td class="text-center">@tour.TourType</td>
+                    <td class="text-left">@tour.Description</td>
+                    <td class="text-right">@tour.Language</td>
+                    <!--Group info-->
+                    <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().GroupName</td>
+                    <td class="text-right">@Model.Groups.Where(x => x.TourId == tour.TourId).FirstOrDefault().NumPeople</td>
+                </tr>
             }
         </tbody>
     </table>

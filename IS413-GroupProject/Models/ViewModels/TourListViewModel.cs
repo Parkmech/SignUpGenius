@@ -12,8 +12,5 @@ namespace IS413_GroupProject.Models.ViewModels
         public IEnumerable<Group> Groups { get; set; }
 
         public PagingInfo PagingInfo { get; set; }
-
-        //additional attribute to help get the category I want
-        //public string CurrentCategory { get; set; }
     }
 }
