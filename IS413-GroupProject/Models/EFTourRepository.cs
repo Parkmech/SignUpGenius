@@ -3,6 +3,8 @@ using System.Linq;
 
 namespace IS413_GroupProject.Models
 {
+    // Connecting the repository to the context file which is pulling from the database
+
     public class EFTourRepository : iTourRepository
     {
 

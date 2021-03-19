@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 //separate class for group that has a FK to link it the the Tour table
 
+// This class is used to schedule an appointment time for a specific group. Lit.
+
 namespace IS413_GroupProject.Models
 {
     public class Group
